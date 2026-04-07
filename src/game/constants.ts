@@ -23,3 +23,10 @@ export const Wall = {
   ON: true,
   OFF: false
 } as const;
+
+export const OppositeDirectionMap = {
+  LEFT: "RIGHT",
+  RIGHT: "LEFT",
+  UP: "DOWN",
+  DOWN: "UP",
+} as const;
