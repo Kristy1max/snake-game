@@ -4,8 +4,9 @@ import type { Board, Point } from "@/game/types";
 interface Props {
   snake: Point[];
   board: Board;
+  food: Point;
 }
-function GameBoard({ snake, board }: Props) {
+function GameBoard({ snake, board, food }: Props) {
   return (
     <div
       style={{
@@ -30,6 +31,19 @@ function GameBoard({ snake, board }: Props) {
             }}
           />
         ))}
+
+      {food &&
+        <div
+        style={{
+          position: "absolute",
+          width: 20,
+          height: 20,
+          left: food.x * 20,
+          top: food.y * 20,
+          background: "red",
+        }}
+      />
+      }
     </div>
   );
 }

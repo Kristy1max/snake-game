@@ -1,8 +1,8 @@
-import type { actionsMap, gameStatusMap } from "./constants";
+import type { ActionsMap, GameStatusMap } from "./constants";
 
 export type Direction = "UP" | "DOWN" | "RIGHT" | "LEFT"
 
-export type GameStatus = typeof gameStatusMap[keyof typeof gameStatusMap];
+export type GameStatus = typeof GameStatusMap[keyof typeof GameStatusMap];
 
 // Not used atm
 // export type Actions = "TICK" | "CHANGE_DIRECTION" | "PAUSE" | "RESUME" | "RESET"
@@ -18,19 +18,20 @@ export interface Board {
 export interface GameState {
   board: Board;
   snake: Point[];
-  food: Point;
+  food: Point | null;
   direction: Direction;
   status: GameStatus;
   score: number;
   speed: number;
+  wall: boolean;
 };
 
 export type GameAction = 
-  | {type: typeof actionsMap.Tick}
-  | { type: typeof actionsMap.Reset }
-  | { type: typeof actionsMap.Pause }
-  | { type: typeof actionsMap.Resume }
+  | {type: typeof ActionsMap.Tick}
+  | { type: typeof ActionsMap.Reset }
+  | { type: typeof ActionsMap.Pause }
+  | { type: typeof ActionsMap.Resume }
   | {
-      type: typeof actionsMap.ChangeDirection;
+      type: typeof ActionsMap.ChangeDirection;
       payload: Direction;
   };

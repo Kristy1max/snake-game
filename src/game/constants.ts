@@ -1,10 +1,10 @@
-export const gameStatusMap = {
+export const GameStatusMap = {
   Running: "RUNNING",
   Paused: "PAUSED",
   GameOver: "GAME_OVER"
-}
+} as const;
 
-export const actionsMap = {
+export const ActionsMap = {
   Tick: "TICK",
   ChangeDirection: "CHANGE_DIRECTION",
   Pause: "PAUSE",
@@ -12,9 +12,14 @@ export const actionsMap = {
   Reset: "RESET",
 } as const;
 
-export const map = {
+export const Map = {
   ArrowUp: "UP",
   ArrowDown: "DOWN",
   ArrowLeft: "LEFT",
   ArrowRight: "RIGHT",
+} as const;
+
+export const Wall = {
+  ON: true,
+  OFF: false
 } as const;

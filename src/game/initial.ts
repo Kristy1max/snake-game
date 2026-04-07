@@ -1,3 +1,4 @@
+import { Wall } from "./constants";
 import type { GameState } from "./types";
 
 export const InitialState: GameState = {
@@ -23,8 +24,6 @@ export const InitialState: GameState = {
   status: "RUNNING",
   score: 0,
   speed: 200,
-  food: {
-    x: 10,
-    y: 10
-  }
+  food: null,
+  wall: Wall.ON
 }
