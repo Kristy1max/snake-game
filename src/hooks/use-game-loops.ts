@@ -1,5 +1,4 @@
 import { useEffect, useRef } from "react";
-// TODO: Examine the hook together
 
 export function useGameLoop(
   callback: () => void,
@@ -7,21 +6,27 @@ export function useGameLoop(
   isRunning: boolean
 ) {
   const savedCallback = useRef<() => void>(() => { });
+  // TODO: test without useEffect
   useEffect(() => {
     savedCallback.current = callback;
   });
+
   useEffect(() => {
     if (!isRunning) return;
-    const id = setInterval(() => {
-      savedCallback.current?.();
-    }, speed);
-    return () => clearInterval(id);
-    // const handleKey = (e: KeyboardEvent) => {
-    //   if (e.key === ' ') {
-    //     savedCallback.current?.();
-    //   }
-    // }
-    // window.addEventListener("keydown", handleKey);
-    // return () => window.removeEventListener("keydown", handleKey);
+
+
+    // const id = setInterval(() => {
+    //   savedCallback.current?.();
+    // }, speed);
+    // return () => clearInterval(id);
+
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === ' ') {
+        savedCallback.current?.();
+      }
+    }
+    // TODO: check document & window difference
+    document.addEventListener("keydown", handleKey);
+    return () => window.removeEventListener("keydown", handleKey);
   }, [speed, isRunning]);
 }

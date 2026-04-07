@@ -1,5 +1,6 @@
 ToDos:
 * 🤔 Read plot of game & mby think do sth else...
+* Make Food as Component 
 
 <!-- DONE -->
 ✅ Fix change direction in the other side (e.g.: after right cant be right)

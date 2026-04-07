@@ -29,28 +29,19 @@ export default function gameStep(state: GameState): GameState {
     y: (head.y + move.y + state.board.height) % state.board.height
   }
 
-  const isEating = newHead.x === state.food?.x && newHead.y === state.food.y;
+  let remainingFood = state.foods ? [...state.foods] : []; 
+
+  const eatenFood = remainingFood.find((food) => food.position.x === newHead.x && food.position.y === newHead.y)
+
   const newSnake: Point[] = [newHead, ...state.snake];
 
-  if (!isEating) {
+  // Movement of snake to next cell
+  if (!eatenFood) {
     newSnake.pop();
   }
 
-  const newFood = isEating || !state.food
-    ? generateFood(newSnake, state.board)
-    : state.food;
-  
-  function generateFood(snake: Point[], board: { width: number; height: number }): Point | null {
-    let position: Point;
-    do {
-      position = {
-        x: Math.floor(Math.random() * board.width),
-        y: Math.floor(Math.random() * board.height),
-      };
-    } while (
-      snake.some((seg) => seg.x === position.x && seg.y === position.y)
-    );
-    return position;
+  if (eatenFood) {
+    remainingFood = remainingFood.filter((food) => eatenFood.id !== food.id)
   }
 
   // It dies on self collision
@@ -68,7 +59,7 @@ export default function gameStep(state: GameState): GameState {
   return {
     ...state,
     snake: newSnake,
-    food: newFood,
-    score: isEating ? state.score + 1 : state.score,
+    foods: remainingFood,
+    score: eatenFood ? state.score + 1 : state.score, // will be price later
   }
 }

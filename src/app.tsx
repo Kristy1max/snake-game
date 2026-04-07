@@ -6,10 +6,11 @@ import { useGameLoop } from "@/hooks/use-game-loops";
 
 import GameBoard from "@/components/board/board";
 import { ActionsMap, GameStatusMap, Map } from "@/game/constants";
+import { useFoodGenerator } from "./hooks/use-food-generator";
 
 function App() {
   const [state, dispatch] = useReducer(gameReducer, InitialState);
-
+  useFoodGenerator(dispatch, state, state.status === GameStatusMap.Running );
 
   useEffect(() => {
     const handleKeyDown = (evt: KeyboardEvent) => {
@@ -28,8 +29,6 @@ function App() {
     state.status === GameStatusMap.Running
   );
 
-  console.log(state);
-
   const handleOnReset = () => {
     dispatch({ type: ActionsMap.Reset})
   }
@@ -40,7 +39,7 @@ function App() {
       <p>Score: {state.score}</p>
       <button onClick={handleOnReset}>Restart</button>
       {/* TODO: check what to do with food instead of state.food!*/}
-      <GameBoard snake={state.snake} board={state.board} food={state.food!} />
+      <GameBoard snake={state.snake} board={state.board} foods={state.foods} />
     </div>
   )
 }

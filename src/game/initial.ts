@@ -24,6 +24,6 @@ export const InitialState: GameState = {
   status: "RUNNING",
   score: 0,
   speed: 200,
-  food: null,
-  wall: Wall.ON
+  foods: null,
+  wall: Wall.OFF
 }

@@ -1,12 +1,13 @@
-import type { Board, Point } from "@/game/types";
+import { FoodTypes } from "@/game/constants";
+import type { Board, Food, Point } from "@/game/types";
 
 
 interface Props {
   snake: Point[];
   board: Board;
-  food: Point;
+  foods: Food[] | null;
 }
-function GameBoard({ snake, board, food }: Props) {
+function GameBoard({ snake, board, foods }: Props) {
   return (
     <div
       style={{
@@ -32,18 +33,20 @@ function GameBoard({ snake, board, food }: Props) {
           />
         ))}
 
-      {food &&
+      {/* TODO: make as component */}
+      {foods && Boolean(foods?.length) && foods.map((food) => 
         <div
-        style={{
-          position: "absolute",
-          width: 20,
-          height: 20,
-          left: food.x * 20,
-          top: food.y * 20,
-          background: "red",
-        }}
-      />
-      }
+          style={{
+            position: "absolute",
+            width: 20,
+            height: 20,
+            left: food.position.x * 20,
+            top: food.position.y * 20,
+            background: FoodTypes.find((item) => item.type === food.type)?.color, // TODO: change this one with props & images inside
+            
+          }}
+        />
+        )}
     </div>
   );
 }

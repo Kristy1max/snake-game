@@ -11,15 +11,12 @@ export default function gameReducer(state: GameState, action: GameAction ) {
     case ActionsMap.ChangeDirection: {
       const currentMove = state.direction
       const nextMove = action.payload;
-
-      // const isOppositeDirection = (currentMove === "LEFT" && nextMove === "RIGHT") || (currentMove === "RIGHT" && nextMove === "LEFT") || (currentMove === "UP" && nextMove === "DOWN") || (currentMove === "DOWN" && nextMove === "UP");
-
-      // AI clean proposal:
       if (OppositeDirectionMap[currentMove] === nextMove) return state;
-      
       return { ...state, direction: nextMove }}
     case ActionsMap.Reset:
-      return {...InitialState }
+      return { ...InitialState }
+    case ActionsMap.UpdateFood:
+      return { ...state, foods: action.payload }
     default:
       return state;
   }

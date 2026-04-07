@@ -11,6 +11,15 @@ export interface Point {
   x: number;
   y: number;
 };
+
+export interface Food {
+  id: string;
+  type: string;
+  position: Point;
+  createdAt: number;
+  lifeTimeMS: number;
+  price: number;
+}
 export interface Board {
   width: number;
   height: number;
@@ -18,7 +27,7 @@ export interface Board {
 export interface GameState {
   board: Board;
   snake: Point[];
-  food: Point | null;
+  foods: Food[] | null;
   direction: Direction;
   status: GameStatus;
   score: number;
@@ -34,4 +43,8 @@ export type GameAction =
   | {
       type: typeof ActionsMap.ChangeDirection;
       payload: Direction;
-  };
+  }
+  | {
+    type: typeof ActionsMap.UpdateFood;
+    payload: Food[]
+  }
