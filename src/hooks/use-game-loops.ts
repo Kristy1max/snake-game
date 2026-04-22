@@ -6,7 +6,6 @@ export function useGameLoop(
   isRunning: boolean
 ) {
   const savedCallback = useRef<() => void>(() => { });
-  // TODO: test without useEffect
   useEffect(() => {
     savedCallback.current = callback;
   });

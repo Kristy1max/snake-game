@@ -17,6 +17,8 @@ export default function gameReducer(state: GameState, action: GameAction ) {
       return { ...InitialState }
     case ActionsMap.UpdateFood:
       return { ...state, foods: action.payload }
+    case ActionsMap.Start:
+      return { ...state, status: GameStatusMap.Running }
     default:
       return state;
   }

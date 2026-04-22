@@ -12,6 +12,7 @@ export interface Point {
   y: number;
 };
 
+// Rename types
 export interface Food {
   id: string;
   type: string;
@@ -48,3 +49,4 @@ export type GameAction =
     type: typeof ActionsMap.UpdateFood;
     payload: Food[]
   }
+  | { type: typeof ActionsMap.Start }

@@ -1,4 +1,4 @@
-import { Wall } from "./constants";
+import { GameStatusMap, Wall } from "./constants";
 import type { GameState } from "./types";
 
 export const InitialState: GameState = {
@@ -21,7 +21,7 @@ export const InitialState: GameState = {
     }
   ],
   direction: "RIGHT",
-  status: "RUNNING",
+  status: GameStatusMap.StandBy,
   score: 0,
   speed: 200,
   foods: null,

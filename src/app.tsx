@@ -33,11 +33,16 @@ function App() {
     dispatch({ type: ActionsMap.Reset})
   }
 
+  const handleStart = () => {
+    dispatch({ type: ActionsMap.Start })
+  }
+
   return (
     <div>
       <h1>Snake 🐍</h1>
       <p>Score: {state.score}</p>
       <button onClick={handleOnReset}>Restart</button>
+      <button onClick={handleStart}>Start</button>
       {/* TODO: check what to do with food instead of state.food!*/}
       <GameBoard snake={state.snake} board={state.board} foods={state.foods} />
     </div>

@@ -3,7 +3,8 @@
 export const GameStatusMap = {
   Running: "RUNNING",
   Paused: "PAUSED",
-  GameOver: "GAME_OVER"
+  GameOver: "GAME_OVER",
+  StandBy: "STAND_BY"
 } as const;
 
 export const ActionsMap = {
@@ -12,7 +13,8 @@ export const ActionsMap = {
   Pause: "PAUSE",
   Resume: "RESUME",
   Reset: "RESET",
-  UpdateFood: "UpdateFood"
+  UpdateFood: "UpdateFood", // make CAPS
+  Start: "START"
 } as const;
 
 export const Map = {
@@ -38,18 +40,28 @@ export const FoodTypes = [
   {
     type: 'cristal',
     price: 100,
-    color: "aqua"
+    color: "black",
+    character: "💎"
   },
   {
     type: 'apple',
     price: 50,
-    color: "red"
+    color: "red",
+    character: "🍏"
   },
   {
     type: 'peach',
     price: 150,
-    color: "orange"
+    color: "yellow",
+    character: "🍎"
   },
+  {
+    type: 'grape',
+    price: 250,
+    color: "yellow",
+    character: "🍇"
+  },
+
 ] as const;
 
 export const FoodLife = {

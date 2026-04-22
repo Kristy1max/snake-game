@@ -60,6 +60,6 @@ export default function gameStep(state: GameState): GameState {
     ...state,
     snake: newSnake,
     foods: remainingFood,
-    score: eatenFood ? state.score + 1 : state.score, // will be price later
+    score: eatenFood ? state.score + eatenFood.price : state.score,
   }
 }
