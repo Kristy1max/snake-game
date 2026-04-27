@@ -8,6 +8,8 @@ import GameBoard from "@/components/board/board";
 import { ActionsMap, GameStatusMap, Map } from "@/game/constants";
 import { useFoodGenerator } from "./hooks/use-food-generator";
 
+import styles from "./styles.module.css";
+
 function App() {
   const [state, dispatch] = useReducer(gameReducer, InitialState);
   useFoodGenerator(dispatch, state, state.status === GameStatusMap.Running );
@@ -37,12 +39,38 @@ function App() {
     dispatch({ type: ActionsMap.Start })
   }
 
+  const handleEnd = () => {
+    if (state.status !== GameStatusMap.Running) return;
+
+    const confirmationModal = window.confirm(`Are you sure you want to end this game?`)
+
+    if (!confirmationModal) return;
+
+    dispatch({ type: ActionsMap.End})
+  }
+
   return (
     <div>
-      <h1>Snake 🐍</h1>
-      <p>Score: {state.score}</p>
-      <button onClick={handleOnReset}>Restart</button>
-      <button onClick={handleStart}>Start</button>
+      <h1 className={styles.title}>
+        Snake <span>🐍</span>
+      </h1>
+      <div className={styles.scoreTile}>
+        <span className={styles.scoreLabel}>SCORE</span>
+        <span className={styles.scoreValue}>{state.score}</span>
+      </div>
+      <div className={styles.btnsWrapper}>
+        <button className={styles.btnPrimary} onClick={handleStart}>
+          ▶️ Start
+        </button>
+
+        <button className={styles.btnSecondary} onClick={handleOnReset}>
+          🔄 Restart
+        </button>
+        {/* TODO: end game btn */}
+        <button className={styles.btnDanger} onClick={handleEnd}>
+          🏁 End
+        </button>
+      </div>
       {/* TODO: check what to do with food instead of state.food!*/}
       <GameBoard snake={state.snake} board={state.board} foods={state.foods} />
     </div>

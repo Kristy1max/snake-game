@@ -1,7 +1,5 @@
 import type { Board, Food, Point } from "@/game/types";
-import Meal from "../meal/meal";
-// import Meal from "@/components/meal/meal";
-
+import Meal from "@/components/meal/meal";
 
 interface Props {
   snake: Point[];

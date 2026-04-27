@@ -13,8 +13,9 @@ export const ActionsMap = {
   Pause: "PAUSE",
   Resume: "RESUME",
   Reset: "RESET",
-  UpdateFood: "UpdateFood", // make CAPS
-  Start: "START"
+  UpdateFood: "UPDATE_FOOD",
+  Start: "START",
+  End: "END"
 } as const;
 
 export const Map = {
@@ -40,25 +41,25 @@ export const FoodTypes = [
   {
     type: 'cristal',
     price: 100,
-    color: "black",
+    color: "#f1f1f1",
     character: "💎"
   },
   {
     type: 'apple',
     price: 50,
-    color: "red",
+    color: "#f7defd",
     character: "🍏"
   },
   {
     type: 'peach',
     price: 150,
-    color: "yellow",
-    character: "🍎"
+    color: "#fdd7d5",
+    character: "🍑"
   },
   {
     type: 'grape',
     price: 250,
-    color: "yellow",
+    color: "#cfe3ca",
     character: "🍇"
   },
 

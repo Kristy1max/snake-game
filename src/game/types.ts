@@ -12,7 +12,7 @@ export interface Point {
   y: number;
 };
 
-// Rename types
+// Rename types - why? 
 export interface Food {
   id: string;
   type: string;
@@ -50,3 +50,4 @@ export type GameAction =
     payload: Food[]
   }
   | { type: typeof ActionsMap.Start }
+  | { type: typeof ActionsMap.End }

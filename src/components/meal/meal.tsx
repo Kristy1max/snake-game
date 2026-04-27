@@ -20,8 +20,7 @@ export default function Meal({ food }: MealProps) {
         background: eat?.color
       }}
     >
-      {/* //TODO: can style sth else */}
       {eat?.character}
-      </div>
+    </div>
   )
 }

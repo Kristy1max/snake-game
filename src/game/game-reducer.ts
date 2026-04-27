@@ -14,11 +14,16 @@ export default function gameReducer(state: GameState, action: GameAction ) {
       if (OppositeDirectionMap[currentMove] === nextMove) return state;
       return { ...state, direction: nextMove }}
     case ActionsMap.Reset:
-      return { ...InitialState }
+      return {
+        ...InitialState,
+        status: GameStatusMap.Running
+      }
     case ActionsMap.UpdateFood:
       return { ...state, foods: action.payload }
     case ActionsMap.Start:
       return { ...state, status: GameStatusMap.Running }
+    case ActionsMap.End:
+      return {...InitialState, status: GameStatusMap.StandBy} // Not sure if StandBy is correct here
     default:
       return state;
   }

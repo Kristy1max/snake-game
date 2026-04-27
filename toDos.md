@@ -1,17 +1,16 @@
 <!-- ToDos -->
 * 🤔 Read plot of game & mby think to do sth else...
-* Make Food as Component 
-* Think ab food look
-* Make it look nicer (the switchers, etc)
-* Make the stoppers
-* Add switcher
-* Fix restart
-* Score: show prices instead of nums
-* Add lives (x3)
 
-* Go through hooks
+* Add the stoppers (like food but that lead to game over)
+* Add lives (x3)
+* Go through hooks next time
 
 <!-- DONE -->
+✅ Make food look nicer
+✅ Fix restart
+✅ Add switcher for End game
+✅ Score: show prices instead of nums
+✅ Make Food as Component 
 ✅ Fix change direction in the other side (e.g.: after right cant be right)
   [Massiv] from forbidden direction:
   [left, right]
